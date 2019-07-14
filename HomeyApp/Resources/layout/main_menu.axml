@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:weightSum="40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout1" />
+    <Button
+        android:text="View Current Status"
+        android:layout_width="500px"
+        android:layout_weight="10"
+        android:layout_marginLeft="150px"
+        android:layout_height="wrap_content"
+        android:id="@+id/statusButton" />
+    <Button
+        android:text="Manage Devices"
+        android:layout_width="500px"
+        android:layout_weight="10"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="150px"
+        android:layout_height="wrap_content"
+        android:id="@+id/manageDevicesButton" />
+    <Button
+        android:text=""
+        android:layout_weight="10"
+        android:layout_width="500px"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="150px"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3" />
+    <Button
+        android:text="Exit"
+        android:layout_weight="10"
+        android:layout_width="500px"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="150px"
+        android:layout_height="wrap_content"
+        android:id="@+id/exitButton" />
+
+</LinearLayout>

@@ -15,6 +15,7 @@ using Android.Graphics;
 using System.Net;
 using System.IO;
 using Android.Content;
+using HomeyApp.Utils;
 
 namespace HomeyApp
 {
@@ -79,15 +80,14 @@ namespace HomeyApp
         public void OnConnected(Bundle connectionHint)
         {
             var person = PlusClass.PeopleApi.GetCurrentPerson(mGoogleApiClient);
-            var name = string.Empty;
-            if (person != null)
-            {
-                TxtName.Text = person.DisplayName;
-                TxtGender.Text = person.Nickname;
-                var Img = person.Image.Url;
-                var imageBitmap = GetImageBitmapFromUrl(Img.Remove(Img.Length - 5));
-                if (imageBitmap != null) ImgProfile.SetImageBitmap(imageBitmap);
-            }
+            var userData = Application.Context.GetSharedPreferences("userData",FileCreationMode.Private);
+            var userDataEdit = userData.Edit();
+            var serializedPersonData = DataSerializer.SerializeToJson(person);
+            userDataEdit.PutString("SerializedPerson", serializedPersonData);
+            userDataEdit.Commit();
+
+            var nextActivity = new Intent(this, typeof(MainMenu));
+            StartActivity(nextActivity);
         }
 
         private void MGsignBtn_Click(object sender, EventArgs e)
